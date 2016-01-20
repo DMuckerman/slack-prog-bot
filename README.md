@@ -5,7 +5,7 @@ This is a Slack bot based on [slack-ruby-bot](https://github.com/dblock/slack-ru
 
 When a Slack message that begins with `!ruby` is issued, Progbot grabs a triple backtick codeblock from the message and evaluates the Ruby inside it, printing the results.
 
-![]('assets/Screen Shot 2016-01-19 at 19.48.04.png' "Screenshot")
+![](assets/Screen Shot 2016-01-19 at 19.48.04.png "Screenshot")
 
 ## License
 
