@@ -22,15 +22,18 @@ module SlackMathbot
           begin
             result = eval("begin $stdout = StringIO.new; #{command}; $stdout.string;
 ensure $stdout = STDOUT end")
-          rescue SyntaxError => se
+          rescue Exception => se
             puts 'RESCUED!'
+            result = "An error occured!" + se.to_s
           end
         end
 
         # Debug print the result
         puts result
 
-        client.say(text: "```" + result + "```", channel: _data.channel)
+        if result.chomp.strip != ''
+          client.say(text: "```" + result + "```", channel: _data.channel)
+        end
         
       end
     end
