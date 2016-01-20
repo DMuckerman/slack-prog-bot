@@ -24,7 +24,7 @@ module SlackMathbot
 ensure $stdout = STDOUT end")
           rescue Exception => se
             puts 'RESCUED!'
-            result = "An error occured!" + se.to_s
+            result = "An error occured: " + se.to_s
           end
         end
 
@@ -33,6 +33,8 @@ ensure $stdout = STDOUT end")
 
         if result.chomp.strip != ''
           client.say(text: "```" + result + "```", channel: _data.channel)
+        else
+          client.say(text: "No output.", channel: _data.channel)
         end
         
       end
