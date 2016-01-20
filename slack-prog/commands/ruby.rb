@@ -19,9 +19,12 @@ module SlackMathbot
         if (command.include? "while true") || (command.include? "while 1")
           result = "Fuck off, Ryan!"
         else # Otherwise, eval the cod
-          result = eval(command).to_s.chomp.strip
-          result = eval("begin $stdout = StringIO.new; #{command}; $stdout.string;
+          begin
+            result = eval("begin $stdout = StringIO.new; #{command}; $stdout.string;
 ensure $stdout = STDOUT end")
+          rescue SyntaxError => se
+            puts 'RESCUED!'
+          end
         end
 
         # Debug print the result
