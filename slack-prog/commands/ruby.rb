@@ -16,17 +16,17 @@ module SlackMathbot
         #command.gsub! "print", ""
 
         # If someone (Ryan decides to be an asshat)
-        if (command.include? "while true") || (command.include? "while 1")
-          result = "Fuck off, Ryan!"
-        else # Otherwise, eval the cod
-          begin
-            result = eval("begin $stdout = StringIO.new; #{command}; $stdout.string;
-ensure $stdout = STDOUT end")
-          rescue Exception => se
-            puts 'RESCUED!'
-            result = "An error occured: " + se.to_s
-          end
-        end
+        #if (command.include? "while true") || (command.include? "while 1")
+        result = "Fuck off, Ryan!"
+        #         else # Otherwise, eval the cod
+        #           begin
+        #             result = eval("begin $stdout = StringIO.new; #{command}; $stdout.string;
+        # ensure $stdout = STDOUT end")
+        #           rescue Exception => se
+        #             puts 'RESCUED!'
+        #             result = "An error occured: " + se.to_s
+        #           end
+        #         end
 
         # Debug print the result
         puts result
